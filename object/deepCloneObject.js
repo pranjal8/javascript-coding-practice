@@ -14,13 +14,15 @@ function deepClone(obj) {
   if (obj instanceof RegExp) {
     return new RegExp(obj);
   }
+  
   const clone = Array.isArray(obj) ? [] : {};
+  
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
       clone[key] = deepClone(obj[key]);
     }
   }
-  return;
+  return clone;
 }
 
 deepClone({ a: 1, b: { c: 2 } }); // {a: 1, b: {c: 2}}
